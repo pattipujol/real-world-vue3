@@ -8,6 +8,7 @@
 <script>
 // @ is an alias to /src
 import eventCard from '@/components/eventCard.vue'
+import enventsServices from '@/services/EventsService.js'
 
 export default {
   name: 'EventList',
@@ -16,42 +17,17 @@ export default {
   },
   data(){
     return{
-      events: [
-        {
-         id: 5928101,
-          category: 'animal welfare',
-          title: 'Pinky Day',
-          description: 'Find your new feline friend at this event.',
-          location: 'Meow Town',
-          date: 'January 28, 2022',
-          time: '12:00',
-          petsAllowed: true,
-          organizer: 'Kat Laydee'
-      },
-      {
-         id: 5928102,
-          category: 'animal welfare',
-          title: 'Rainbow Week',
-          description: 'Find your new feline friend at this event.',
-          location: 'Meow Town',
-          date: 'January 28, 2022',
-          time: '12:00',
-          petsAllowed: true,
-          organizer: 'Kat Laydee'
-      },
-      {
-         id: 5928103,
-          category: 'animal welfare',
-          title: 'Fluffy ',
-          description: 'Find your new feline friend at this event.',
-          location: 'Meow Town',
-          date: 'January 28, 2022',
-          time: '12:00',
-          petsAllowed: true,
-          organizer: 'Kat Laydee'
-      }
-      ]
+      events: []
     }
+  },
+  created(){
+    enventsServices.getEvents().then(response => {
+      console.log(response.data)
+      this.events = response.data
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }
 }
 </script>

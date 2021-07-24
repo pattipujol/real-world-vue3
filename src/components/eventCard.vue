@@ -1,8 +1,10 @@
 <template>
+<router-link :to="{ name: 'EventDetail', params: { id: event.id, category: event.category }}">
   <div class="event-card">
     <span>@ {{event.time}} - {{event.date}}</span>
     <h4>{{event.title}}</h4>
   </div>
+</router-link>
 </template>
 
 <script>
