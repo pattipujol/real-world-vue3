@@ -10,6 +10,11 @@ const routes = [
     component: EventList
   },
   {
+    path: '/events',
+    name: 'Events',
+    component: EventList
+  },
+  {
     path: '/events/:category/:id',
     name: 'EventDetail',
     props: true,
